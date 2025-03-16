@@ -6,7 +6,7 @@
 /*   By: lpennisi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 20:56:31 by lpennisi          #+#    #+#             */
-/*   Updated: 2024/12/07 23:32:04 by lpennisi         ###   ########.fr       */
+/*   Updated: 2025/03/16 12:24:50 by lpennisi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,32 @@ void	remove_consecutives_space(char **lines)
 	}
 }
 
+void	remove_last_space(char **lines)
+{
+    int	i;
+    int	j;
+
+    i = 0;
+    while (lines[i])
+    {
+        j = ft_strlen(lines[i]) - 1;
+        while (j >= 0 && lines[i][j] == ' ')
+        {
+            lines[i][j] = '\0';
+            j--;
+        }
+        i++;
+    }
+}
+
 void	remove_extra_space(char **lines)
 {
 	int	i;
 	int	j;
 	int	k;
 
-	i = 0;
-	while (lines[i])
+	i = -1;
+	while (lines[++i])
 	{
 		j = 0;
 		while (lines[i][j] == ' ')
@@ -62,9 +80,29 @@ void	remove_extra_space(char **lines)
 			}
 			lines[i][k] = '\0';
 		}
-		i++;
 	}
 	remove_consecutives_space(lines);
+	remove_last_space(lines);
+}
+
+int	are_all_digits(char **splitted)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (splitted[i])
+	{
+		j = 0;
+		while (splitted[i][j])
+		{
+			if (!ft_isdigit(splitted[i][j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 int	check_color_format(t_map *raw_map, char *line)
@@ -80,7 +118,8 @@ int	check_color_format(t_map *raw_map, char *line)
 		{
 			if (!(ft_atoi(splitted[0]) < 0 || ft_atoi(splitted[0]) > 255 || \
 			ft_atoi(splitted[1]) < 0 || ft_atoi(splitted[1]) > 255 || \
-			ft_atoi(splitted[2]) < 0 || ft_atoi(splitted[2]) > 255))
+			ft_atoi(splitted[2]) < 0 || ft_atoi(splitted[2]) > 255) && \
+			are_all_digits(splitted))
 			{
 				if (ft_strncmp(line, "F ", 2) == 0)
 					raw_map->f_color = ft_strdup(color);

@@ -6,7 +6,7 @@
 /*   By: lpennisi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:22:52 by lpennisi          #+#    #+#             */
-/*   Updated: 2025/02/03 18:45:56 by lpennisi         ###   ########.fr       */
+/*   Updated: 2025/03/16 12:29:02 by lpennisi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_first_last_row(t_c3d *c3d, char **map_lines, int height)
 	{
 		if (map_lines[0][j] != '1' && map_lines[0][j] != ' ' \
 		&& map_lines[0][j] != '\t')
-			error_exit(c3d, "Error\nMap is not closed: first row");
+			error_exit(c3d, "Error\nMap is not closed: first row\n");
 		j++;
 	}
 	j = 0;
@@ -29,7 +29,7 @@ void	check_first_last_row(t_c3d *c3d, char **map_lines, int height)
 	{
 		if (map_lines[height - 1][j] != '1' && map_lines[height - 1][j] \
 		!= ' ' && map_lines[height - 1][j] != '\t')
-			error_exit(c3d, "Error\nMap is not closed: last row");
+			error_exit(c3d, "Error\nMap is not closed: last row\n");
 		j++;
 	}
 }
@@ -50,7 +50,7 @@ void	check_space(t_c3d *c3d, char **map_lines, int i, int height)
 				(j > 0 && map_lines[i][j - 1] == '0') ||
 				(j < row_length - 1 && map_lines[i][j + 1] == '0'))
 				error_exit(c3d, \
-				"Error\nMap is not closed: space inside \row adjacent to '0'");
+				"Error\nMap is not closed: space inside row adjacent to '0'\n");
 		}
 		j++;
 	}
@@ -59,7 +59,6 @@ void	check_space(t_c3d *c3d, char **map_lines, int i, int height)
 void	check_first_last_column(t_c3d *c3d, char **map_lines, int height)
 {
 	int	i;
-	int	j;
 	int	row_length;
 
 	i = 0;
@@ -70,11 +69,10 @@ void	check_first_last_column(t_c3d *c3d, char **map_lines, int height)
 			c3d->raw_map.dimension.w = row_length;
 		if (map_lines[i][0] != '1' && map_lines[i][0] != ' ' \
 		&& map_lines[i][0] != '\t')
-			error_exit(c3d, "Error\nMap is not closed: first column");
+			error_exit(c3d, "Error\nMap is not closed: first column\n");
 		if (map_lines[i][row_length - 1] != '1' && map_lines[i] \
 		[row_length - 1] != ' ' && map_lines[i][row_length - 1] != '\t')
-			error_exit(c3d, "Error\nMap is not closed: last column");
-		j = 1;
+			error_exit(c3d, "Error\nMap is not closed: last column\n");
 		check_space(c3d, map_lines, i, height);
 		i++;
 	}

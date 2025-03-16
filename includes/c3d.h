@@ -6,7 +6,7 @@
 /*   By: lpennisi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 16:28:38 by lpennisi          #+#    #+#             */
-/*   Updated: 2025/03/03 17:35:51 by lpennisi         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:31:30 by lpennisi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,7 +295,6 @@ void	set_player_orientation(t_c3d *c3d);
 
 void	draw_3d_wall_height_with_one_color(double x_3d, double line_heigth, \
 t_c3d *c3d);
-void	draw_tile(char **img_data_addr, t_point xy, int color, t_c3d *c3d);
 void	check_shorter_rows(t_c3d *c3d, char **map_lines, int height);
 void	check_map_closed(t_c3d *c3d, char **map_lines);
 void	remove_extra_space(char **lines);

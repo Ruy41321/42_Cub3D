@@ -27,6 +27,7 @@ void	draw_3d_wall_height_with_one_color(double x_3d, double h, t_c3d *c3d)
 	double	y;
 	double	tmp;
 
+	y = 0;
 	tmp = y + h;
 	y = c3d->win_2d.dimension.w / 2 - (h / 2);
 	while (y < tmp)
@@ -57,27 +58,5 @@ void	draw_line(t_point point, double angle, int color, t_c3d *c3d)
 		mlx_pixel_put(c3d->mlx_connection, c3d->win_2d.mlx_win, \
 		point.x, point.y, color);
 		point.x++;
-	}
-}
-
-/*questa stampa le celle senza margine
-commento che stava dopo il print di aaaaa:
-	//ft_color(img_data_addr, xy.x + j, xy.y + i, c3d, color);
-*/
-void	draw_tile(char **img_data_addr, t_point xy, int color, t_c3d *c3d)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < TILE_SIZE)
-	{
-		j = 0;
-		while (j < TILE_SIZE)
-		{
-			printf("aaaaaa\n");
-			j++;
-		}
-		i++;
 	}
 }

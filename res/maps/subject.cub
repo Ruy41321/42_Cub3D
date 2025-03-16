@@ -2,9 +2,9 @@ NO res/texture/muro.xpm
 EA res/texture/muro.xpm
 SO res/texture/muro.xpm
 WE res/texture/muro.xpm
-
-C 100,150,255
-F 100,100,100 
+      
+C 100,150,255 
+F 100,100,100
 
         11111111
         1W000001

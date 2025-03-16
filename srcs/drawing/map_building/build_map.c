@@ -35,10 +35,8 @@ char	*read_texture_data(int fd)
 {
 	char	*line;
 	char	*content_file;
-	size_t	total_size;
 	int		i;
 
-	total_size = 0;
 	content_file = ft_safe_malloc(1);
 	content_file[0] = '\0';
 	i = 0;

@@ -35,7 +35,7 @@ int	get_orientation(char c)
 		return (S);
 	else if (c == 'E')
 		return (E);
-	else if (c == 'W')
+	else
 		return (W);
 }
 

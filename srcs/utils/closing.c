@@ -6,7 +6,7 @@
 /*   By: lpennisi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:31:51 by lpennisi          #+#    #+#             */
-/*   Updated: 2025/03/03 17:36:56 by lpennisi         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:28:10 by lpennisi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ int	on_destroy(t_c3d *c3d)
 void	error_exit(t_c3d *c3d, char *message)
 {
 	printf("%s\n", message);
-	on_destroy(c3d);
+	if (c3d)
+		on_destroy(c3d);
+	exit(0);
 }

@@ -12,7 +12,7 @@
 
 #include "c3d.h"
 
-static void	draw_tile_with_marg(t_img *img, t_point xy, int color, t_c3d *c3d)
+static void	draw_tile_with_marg(t_img *img, t_point xy, int color)
 {
 	int	x_value;
 	int	y_value;
@@ -70,15 +70,15 @@ void	draw_2d_map(t_img *img, t_c3d *c3d)
 			xy.x = x * TILE_SIZE;
 			xy.y = y * TILE_SIZE;
 			if (x >= ft_strlen(c3d->raw_map.grid[y]))
-				draw_tile_with_marg(img, xy, BLACK, c3d);
+				draw_tile_with_marg(img, xy, BLACK);
 			else if (c3d->raw_map.grid[y][x] == '1')
-				draw_tile_with_marg(img, xy, GRAY, c3d);
+				draw_tile_with_marg(img, xy, GRAY);
 			else if (c3d->raw_map.grid[y][x] == '0')
-				draw_tile_with_marg(img, xy, WHITE, c3d);
+				draw_tile_with_marg(img, xy, WHITE);
 			else if (c3d->raw_map.grid[y][x] == ' ')
-				draw_tile_with_marg(img, xy, BLACK, c3d);
+				draw_tile_with_marg(img, xy, BLACK);
 			else
-				draw_tile_with_marg(img, xy, RED, c3d);
+				draw_tile_with_marg(img, xy, RED);
 		}
 	}
 }

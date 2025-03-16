@@ -76,7 +76,6 @@ void	parse_and_check(t_c3d *c3d)
 {
 	t_map	*raw_map;
 	char	**map_lines;
-	int		i;
 
 	check_texture_data(c3d);
 	raw_map = &c3d->raw_map;

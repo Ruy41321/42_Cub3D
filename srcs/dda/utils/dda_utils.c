@@ -6,7 +6,7 @@
 /*   By: lpennisi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 17:18:24 by lpennisi          #+#    #+#             */
-/*   Updated: 2024/12/07 17:18:32 by lpennisi         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:15:32 by lpennisi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ t_point	find_intersection(t_point p1, double p1_ang, t_point p2, double p2_ang)
 
 int	is_it_a_wall(t_point point_to_verify, char **map_grid)
 {
+	int	map_height;
+	int	map_width;
+
+	map_width = ft_strlen(map_grid[0]);
+	map_height = ft_arrlen(map_grid);
+	if (point_to_verify.x / TILE_SIZE >= map_width || \
+	point_to_verify.y / TILE_SIZE >= map_height)
+		return (FALSE);
 	if (map_grid[(int)point_to_verify.y / TILE_SIZE][\
 	(int)point_to_verify.x / TILE_SIZE] == '1')
 		return (TRUE);

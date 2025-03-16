@@ -1,15 +1,16 @@
-NAME = cub3d
+NAME = cub3D
 CC = gcc
-CFLAGS = -I$(MLXDIR) -Iincludes -I$(LIBFTDIR) -g #-fsanitize=address #-Wall -Wextra -Werror
+CFLAGS = -I$(MLXDIR) -Iincludes -I$(LIBFTDIR) -gdwarf-2 -Wall -Wextra -Werror #-fsanitize=address 
 
 MAP_PATH = res/maps/subject.cub
 EXE = $(NAME) $(MAP_PATH)
+
 
 LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
 LIBFT_FLAGS = -L$(LIBFTDIR) -lft
 
-MLXDIR = ./mlx
+MLXDIR = ./minilibx-linux
 MLXLIB = $(MLXDIR)/libmlx.a
 INCLUDES = -I/usr/include -I$(MLXDIR) -I$(LIBFTDIR) 
 MLX_FLAGS = -L$(MLXDIR) -lmlx -L/usr/lib/X11 -lXext -lX11
@@ -50,8 +51,44 @@ test: all
 
 norm:
 	norminette libft includes $(SRCS)
-	
+
+invalid_test: all
+	./$(NAME) res/maps/invalid/empty_line.cub
+	./$(NAME) res/maps/invalid/empty.cub
+	./$(NAME) res/maps/invalid/foo.txt
+	./$(NAME) res/maps/invalid/invalid_rgb.cub
+	./$(NAME) res/maps/invalid/invalid_rgb2.cub
+	./$(NAME) res/maps/invalid/invalid_textures.cub
+	./$(NAME) res/maps/invalid/missing_texture.cub
+	./$(NAME) res/maps/invalid/no_ceiling_rgb.cub
+	./$(NAME) res/maps/invalid/no_ceiling.cub
+	./$(NAME) res/maps/invalid/no_floor_rgb.cub
+	./$(NAME) res/maps/invalid/no_floor.cub
+	./$(NAME) res/maps/invalid/no_player.cub
+	./$(NAME) res/maps/invalid/out_of_map_elements.cub
+	./$(NAME) res/maps/invalid/player_on_borders.cub
+	./$(NAME) res/maps/invalid/unclosed_map.cub
+	./$(NAME) res/maps/invalid/unknown_char.cub
+	./$(NAME) res/maps/invalid/duplicate_player.cub
+
 valgrind: all
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/empty_line.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/empty.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/foo.txt
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/invalid_rgb.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/invalid_rgb2.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/invalid_textures.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/missing_texture.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/no_ceiling_rgb.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/no_ceiling.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/no_floor_rgb.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/no_floor.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/no_player.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/out_of_map_elements.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/player_on_borders.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/unclosed_map.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/unknown_char.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) res/maps/invalid/duplicate_player.cub
 	valgrind --leak-check=full --show-leak-kinds=all ./$(EXE)
 
 clean:

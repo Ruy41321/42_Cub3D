@@ -94,8 +94,8 @@ void	bresenham(t_c3d *c3d, int x1, int y1, int color)
 
 	params.xy0.x = c3d->player.position.x;
 	params.xy0.y = c3d->player.position.y;
-	params.dx.x = abs(x1 - params.xy0.x);
-	params.dx.y = abs(y1 - params.xy0.y);
+	params.dx.x = fabs(x1 - params.xy0.x);
+	params.dx.y = fabs(y1 - params.xy0.y);
 	params.color = color;
 	set_step(&params, x1, y1);
 	draw_bras_line(c3d, &params, x1, y1);

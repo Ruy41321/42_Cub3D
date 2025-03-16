@@ -20,7 +20,7 @@ int	get_oriented_texture_color(int orientation)
 		return (GREEN);
 	else if (orientation == W)
 		return (PINK);
-	else if (orientation == E)
+	else
 		return (YELLOW);
 }
 
@@ -32,7 +32,7 @@ int	get_orientation_id(int orientation)
 		return (1);
 	else if (orientation == W)
 		return (2);
-	else if (orientation == E)
+	else
 		return (3);
 }
 
@@ -103,7 +103,6 @@ alla funzione visualize_3d*/
 void	draw_3d_fov(t_c3d *c3d)
 {
 	double	angle_variation;
-	t_point	end_point;
 	t_ray	ray;
 	double	saved_left_half_fov;
 
