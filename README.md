@@ -6,6 +6,12 @@
 
 ---
 
+###CONFIG
+
+To run the project on your machine you have to clone this repository: [minilibx](https://github.com/42Paris/minilibx-linux) and place it in the project folder
+
+---
+
 ### Collaborators
 
 - **Luigi Argenziano Vagello** ([GitHub Profile](https://github.com/itrustinshell))
